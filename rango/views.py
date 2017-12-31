@@ -12,7 +12,10 @@ def index(request):
     return render(request, 'rango/index.html', context=context_dict)
 
 def about(req):
-    return HttpResponse("Rango says here is the about page.<br/><a href='/rango'>Index</a>")
+#   return HttpResponse("Rango says here is the about page.<br/><a href='/rango'>Index</a>")
+    print(req.method)
+    print(req.user)
+    return render(req, 'rango/about.html', {})
 
 def show_category(req, category_name_slug):
     context_dict = {}
