@@ -13,7 +13,7 @@
     </head>
     <body>
         <div style="float:left;width:20%;">
-            {% block sid_bar %}
+            {% block side_bar %}
                 {% get_category_list category %}
             {% endblock %}
         </div>
@@ -24,11 +24,13 @@
             </div>
             <hr/>
             <div>
+                {% block page_footer %}
                 <ul>
                     <li><a href="{% url 'add_category' %}">Add New Category</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'index' %}">Index</a></li>
                 </ul>
+                {% endblock %}
             </div>
         </div>
     </body>

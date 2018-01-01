@@ -1,0 +1,29 @@
+{% extends 'rango/layout.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    注册
+{% endblock %}
+
+{% block side_bar %}
+    &nbsp;&nbsp;&nbsp;&nbsp;
+{% endblock %}
+
+{% block body_block %}
+    <h1>用户注册</h1>
+    {% if registered %}
+        Rango says: <strong>thank you for registering!</strong>
+        <a href="{% url 'index' %}">Return to homepage.</a><br/>
+    {% else %}
+        Rango says: <strong>register here!</strong><br/>
+        <form id="user_form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            <input type="submit" name="submit" value="注册" />
+        </form>
+    {% endif %}
+{% endblock %}
+
+{% block page_footer %}
+{% endblock %}
