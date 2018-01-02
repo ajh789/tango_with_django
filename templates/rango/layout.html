@@ -25,11 +25,11 @@
             <hr/>
             <div>
                 {% block page_footer %}
-                <ul>
-                    <li><a href="{% url 'add_category' %}">Add New Category</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'index' %}">Index</a></li>
-                </ul>
+                    Menu:&nbsp;
+                    <a href="{% url 'add_category' %}">Add New Category</a>
+                    <a href="{% url 'about' %}">About</a>
+                    <a href="{% url 'index' %}">Index</a>
+                    <a href="{% url 'login' %}">Login</a>
                 {% endblock %}
             </div>
         </div>
