@@ -1,7 +1,7 @@
 {% extends 'rango/layout.html' %}
 {% load staticfiles %}
 
-{% block body_block %}
+{% block body %}
     <h1>Rango says...</h1>
     {% if user.is_authenticated %}
         Howdy {{ user.username }}

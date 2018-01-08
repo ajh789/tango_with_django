@@ -1,11 +1,11 @@
 {% extends 'rango/layout.html' %}
 {% load staticfiles %}
 
-{% block title_block %}
+{% block title %}
     {{ category.name }}
 {% endblock %}
 
-{% block body_block %}
+{% block body %}
     {% if category %}
         <h1>{{ category.name }}</h1>
         {% if pages %}

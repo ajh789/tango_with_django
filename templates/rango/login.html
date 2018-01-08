@@ -1,14 +1,14 @@
 {% extends 'rango/layout.html' %}
 
-{% block title_block %}
+{% block title %}
     Login
 {% endblock %}
 
-{% block side_bar %}
+{% block sidebar %}
     &nbsp;
 {% endblock %}
 
-{% block body_block %}
+{% block body %}
     <h1>Login to Rango</h1>
     <form id="login_form" method="post" action="{% url 'login' %}">
         {% csrf_token %}

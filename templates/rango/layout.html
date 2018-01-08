@@ -7,14 +7,14 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <title>
       Rango -
-      {% block title_block %}
+      {% block title %}
         How to Tango with Django!
       {% endblock %}
     </title>
   </head>
   <body>
     <div style="float:left;width:20%;">
-      {% block side_bar %}
+      {% block sidebar %}
         {% get_category_list category %}
       {% endblock %}
     </div>
@@ -29,7 +29,7 @@
         {% endblock %}
       </div>
       <div>
-        {% block body_block %}
+        {% block body %}
         {% endblock %}
       </div>
       <hr/>
