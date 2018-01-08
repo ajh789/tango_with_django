@@ -3,35 +3,36 @@
 {% load staticfiles %}
 
 <html>
-    <head>
-        <title>
-            Rango -
-            {% block title_block %}
-                How to Tango with Django!
-            {% endblock %}
-        </title>
-    </head>
-    <body>
-        <div style="float:left;width:20%;">
-            {% block side_bar %}
-                {% get_category_list category %}
-            {% endblock %}
-        </div>
-        <div style="float:left;width:80%">
-            <div>
-                {% block body_block %}
-                {% endblock %}
-            </div>
-            <hr/>
-            <div>
-                {% block page_footer %}
-                    Menu:&nbsp;
-                    <a href="{% url 'add_category' %}">Add New Category</a>
-                    <a href="{% url 'about' %}">About</a>
-                    <a href="{% url 'index' %}">Index</a>
-                    <a href="{% url 'login' %}">Login</a>
-                {% endblock %}
-            </div>
-        </div>
-    </body>
+  <head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <title>
+      Rango -
+      {% block title_block %}
+        How to Tango with Django!
+      {% endblock %}
+    </title>
+  </head>
+  <body>
+    <div style="float:left;width:20%;">
+      {% block side_bar %}
+        {% get_category_list category %}
+      {% endblock %}
+    </div>
+    <div style="float:left;width:80%">
+      <div class="bg-info" style="padding: 8px; margin: 2px;">
+        {% block page_footer %}
+          Navigation:&nbsp;
+          <a class="btn btn-default active" href="{% url 'index' %}">Home</a>
+          <a class="btn btn-default active" href="{% url 'add_category' %}">Add New Category</a>
+          <a class="btn btn-default active" href="{% url 'about' %}">About</a>&nbsp;
+          <a class="                      " href="{% url 'login' %}">Login</a>
+        {% endblock %}
+      </div>
+      <div>
+        {% block body_block %}
+        {% endblock %}
+      </div>
+      <hr/>
+    </div>
+  </body>
 </html>
