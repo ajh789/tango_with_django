@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm
@@ -31,6 +32,7 @@ def show_category(req, category_name_slug):
         context_dict['pages'] = None
     return render(req, 'rango/category.html', context_dict)
 
+@login_required
 def add_category(req):
     form = CategoryForm()
     if req.method == 'POST':
@@ -47,6 +49,7 @@ def add_category(req):
     print('Render page rango/add_category.html')
     return render(req, 'rango/add_category.html', {'form': form});
 
+@login_required
 def add_page(req, category_name_slug):
     try:
         category = Category.objects.get(slug=category_name_slug)
@@ -111,3 +114,8 @@ def user_login(req):
             return HttpResponse('Invalid login details supplied.')
     else:
         return render(req, 'rango/login.html', {})
+
+@login_required
+def user_logout(req):
+    logout(req)
+    return redirect(reverse('index'))
