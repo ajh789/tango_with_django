@@ -9,12 +9,16 @@ from rango.forms import CategoryForm, PageForm
 from rango.forms import UserForm, UserProfileForm
 
 def index(request):
+    request.session.set_test_cookie()
     category_list = Category.objects.order_by('-likes')[:5]
     page_list = Page.objects.order_by('-views')[:5];
     context_dict = {'categories': category_list, 'pages': page_list}
     return render(request, 'rango/index.html', context=context_dict)
 
 def about(req):
+    if req.session.test_cookie_worked():
+        print("TEST COOKIE WORKED!")
+        req.session.delete_test_cookie()
 #   return HttpResponse("Rango says here is the about page.<br/><a href='/rango'>Index</a>")
     print(req.method)
     print(req.user)
