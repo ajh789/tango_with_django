@@ -4,4 +4,6 @@ Personal practice of book "Tango with Django, A beginner's guide to web developm
 
 See http://www.tangowithdjango.com/
 
+This implementation isn't completely same as the book, but almost the same.
+
 Bootstrap 3.3 css https://getbootstrap.com/docs/3.3/css/
