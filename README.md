@@ -1,4 +1,4 @@
-# TangoWithDjango
+# Tango with Django by implementing app Rango
 
 Personal practice of book "Tango with Django, A beginner's guide to web development with Django 1.9"
 
