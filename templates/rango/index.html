@@ -6,8 +6,9 @@
     {% if user.is_authenticated %}
         Howdy <b>{{ user.username }}</b>
     {% else %}
-        <div>Hey there partner!</div>
+        <span>Hey there partner!</span>
     {% endif %}
+    <p>visits: {{ visits }}</p>
     <div>
     <h2>Most Liked Categories</h2>
     {% if categories %}
