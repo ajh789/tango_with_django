@@ -8,7 +8,7 @@
     {% else %}
         <span>Hey there partner!</span>
     {% endif %}
-    <p>visits: {{ visits }}</p>
+    <p>visits: {{ request.COOKIES.visits }}</p>
     <div>
     <h2>Most Liked Categories</h2>
     {% if categories %}
