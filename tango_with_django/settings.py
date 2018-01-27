@@ -132,12 +132,11 @@ STATICFILES_DIRS = [STATIC_DIR, ]
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
-LOGIN_URL = '/rango/login/'
+LOGIN_URL = '/accounts/login/'
 
 # Customized user registration functionalities with django-registration-redux
 # All settings are self-explanatory
 REGISTRATION_OPEN = True
 ACCOUNT_ACTIVATION_DAYS = 30
 REGISTRATION_AUTO_LOGIN = True
-LOGIN_REDIRECT_URL = '/rango'
-LOGIN_URL = '/accounts/login'
+LOGIN_REDIRECT_URL = '/rango/'
