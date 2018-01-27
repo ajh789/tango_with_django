@@ -12,29 +12,38 @@ from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm
 from rango.forms import UserForm, UserProfileForm
 
-def visitor_cookie_handler(req, rsp):
-    visits = int(req.COOKIES.get('visits', '1'))
-    last_visit_cookie = req.COOKIES.get('last_visit', str(datetime.now()))
+# A helper method
+def get_server_side_cookie(req, cookie, default_val=None):
+    val = req.session.get(cookie)
+    if not val:
+        val = default_val
+    return val
+
+def visitor_cookie_handler(req):
+    visits = int(get_server_side_cookie(req, 'visits', '1'))
+    last_visit_cookie = get_server_side_cookie(req, 'last_visit', str(datetime.now()))
     last_visit_time = datetime.strptime(last_visit_cookie[:-7], '%Y-%m-%d %H:%M:%S')
     current_time = datetime.now()
 #   print 'Local timezone: %s' % timezone.get_current_timezone()
 #   print 'Current time: %s' % current_time
     if (current_time - last_visit_time).seconds > 0:
         visits = visits + 1
-        rsp.set_cookie('last_visit', str(current_time))
+        req.session['last_visit'] = str(current_time)
     else:
         visits = 1
-        rsp.set_cookie('last_visit', last_visit_cookie)
-    rsp.set_cookie('visits', visits)
+        req.session['last_visit'] = last_visit_cookie
+    req.session['visits'] = visits
 
 def index(req):
     req.session.set_test_cookie()
     category_list = Category.objects.order_by('-likes')[:5]
     page_list = Page.objects.order_by('-views')[:5];
     context_dict = {'categories': category_list, 'pages': page_list}
-    rsp =  render(req, 'rango/index.html', context=context_dict)
-    visitor_cookie_handler(req, rsp)
+    
+    visitor_cookie_handler(req)
+    context_dict['visits'] = req.session['visits']
 
+    rsp =  render(req, 'rango/index.html', context=context_dict)
     return rsp
 
 def about(req):
